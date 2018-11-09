@@ -2,6 +2,9 @@
 
 import operator
 
+# https://docs.python.org/3/library/operator.html
+# link to the operator functions
+
 operators = {
     '+': operator.add,
     '-': operator.sub,
@@ -10,6 +13,10 @@ operators = {
     '^': operator.pow,
     '%': operator.mod,
     '!': math.factorial,
+    '|': operator.xor,
+    '&': operator.and_
+    '~': operator.inv,
+    '//': operator.floordiv,
 }
 
 def calculate(myarg):
