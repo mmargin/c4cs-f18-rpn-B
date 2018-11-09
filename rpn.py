@@ -20,6 +20,7 @@ operators = {
 }
 
 def calculate(myarg):
+    history = ""
     stack = list()
     for token in myarg.split():
         try:
@@ -27,9 +28,21 @@ def calculate(myarg):
             stack.append(token)
         except ValueError:
             function = operators[token]
-            arg2 = stack.pop()
-            arg1 = stack.pop()
-            result = function(arg1, arg2)
+	    if token == 'h':
+		print(history)
+	    else:
+		if token == '~' || token == '!':
+		    arg = stack.pop()
+		    result = function(arg)
+		    if token == '!':
+			history = arg + token + "=" + result
+		    else:
+			history = token + arg  "=" + result
+		else: 
+            	    arg2 = stack.pop()
+            	    arg1 = stack.pop()
+            	    result = function(arg1, arg2)
+		    history = arg + token + arg +  "=" + result
             stack.append(result)
         print(stack)
     if len(stack) != 1:
