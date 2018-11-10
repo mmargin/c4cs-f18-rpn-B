@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import operator
+import math
 
 # https://docs.python.org/3/library/operator.html
 # link to the operator functions
@@ -14,13 +15,12 @@ operators = {
     '%': operator.mod,
     '!': math.factorial,
     '|': operator.xor,
-    '&': operator.and_
-    '~': operator.inv,
+    '&': operator.and_,
     '//': operator.floordiv,
+    '~': operator.inv
 }
 
-def calculate(myarg):
-    history = ""
+def calculate(myarg, history):
     stack = list()
     for token in myarg.split():
         try:
@@ -31,18 +31,20 @@ def calculate(myarg):
 	    if token == 'h':
 		print(history)
 	    else:
-		if token == '~' || token == '!':
+		if token == '~' or  token == '!':
 		    arg = stack.pop()
 		    result = function(arg)
 		    if token == '!':
-			history = arg + token + "=" + result
+			history = "{}{} = {}".format(arg, token, result)
 		    else:
-			history = token + arg  "=" + result
-		else: 
+			history = "{}{} = {}".format(token, arg, result)
+		else:
             	    arg2 = stack.pop()
             	    arg1 = stack.pop()
+		    if token == '/' and arg2 == 0:
+                        return "Divide by zero error"
             	    result = function(arg1, arg2)
-		    history = arg + token + arg +  "=" + result
+		    history = history = "{} {} {} = {}".format(arg1, token, arg2, result)
             stack.append(result)
         print(stack)
     if len(stack) != 1:
@@ -50,6 +52,7 @@ def calculate(myarg):
     return stack.pop()
 
 def main():
+    history = ""
     while True:
         result = calculate(input("rpn calc> "))
         print("Result: ", result)

@@ -31,13 +31,10 @@ class TestBasics(unittest.TestCase):
         result = rpn.calculate("3 4 |")
         self.assertEqual(1)
 
-    def test_not(self):
-        result = rpn.calculate("6 ~")
-        self.assertEqual(-6, result)
-
     def test_int_div(self):
         result = rpn.calculate("8 3 /")
         self.assertEqual(2, result)
+
     def test_and(self):
         result = rpn.calculate("3 4 &")
         self.assertEqual(0)
