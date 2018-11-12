@@ -34,6 +34,15 @@ class TestBasics(unittest.TestCase):
     def test_divide_by_0_error(self):
 	result = rpn.calculate("5 0 /")
 	self.assertEqual("Divide by zero error", result)
+    
+    def test_history1(self):
+        result1 = rpn.calculate("5 3 -")
+        result2 = rpn.calculate("h")
+        self.assertEqual("5 - 3 = 2", result2)
+
+    def test_history2(self):
+        result1 = rpn.calculate("3 !")
+        result2 = rpn.calculate("h")
 
 if __name__ == '__main__':
     unittest.main()
