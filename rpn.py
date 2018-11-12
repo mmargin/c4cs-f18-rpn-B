@@ -40,7 +40,7 @@ def calculate(myarg):
                         return "Divide by zero error"
 		    result = function(arg1, arg2)
 		    history = "{} {} {} = {}".format(arg1, token, arg2, result)
-            stack.append(result)
+            	stack.append(result)
         #print(stack)
     if len(stack) != 1:
         raise TypeError("Too many parameters")
