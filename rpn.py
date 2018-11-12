@@ -18,6 +18,7 @@ operators = {
 }
 
 def calculate(myarg):
+    global history
     stack = list()
     for token in myarg.split():
         try:
@@ -46,7 +47,7 @@ def calculate(myarg):
     return stack.pop()
 
 
-global history
+history = ""
 
 def main():
     while True:
