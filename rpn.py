@@ -46,7 +46,7 @@ def calculate(myarg):
     return stack.pop()
 
 
-history = ""
+global history
 
 def main():
     while True:
