@@ -38,7 +38,7 @@ def calculate(myarg):
 		    if token == '/' and arg2 == 0:
                         return "Divide by zero error"
             	    result = function(arg1, arg2)
-		    history = history = "{} {} {} = {}".format(arg1, token, arg2, result)
+		    history = "{} {} {} = {}".format(arg1, token, arg2, result)
             stack.append(result)
         print(stack)
     if len(stack) != 1:
