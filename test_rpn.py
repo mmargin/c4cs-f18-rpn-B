@@ -27,16 +27,12 @@ class TestBasics(unittest.TestCase):
         result = rpn.calculate("4 !")
         self.assertEqual(24, result)
 
-    def test_or(self):
-        result = rpn.calculate("3 4 |")
-        self.assertEqual(1)
-
     def test_int_div(self):
         result = rpn.calculate("8 3 //")
         self.assertEqual(2, result)
 
     def test_divide_by_0_error(self):
-	result = rpn.calculate("0 5 /")
+	result = rpn.calculate("5 0 /")
 	self.assertEqual("Divide by zero error", result)
 
 if __name__ == '__main__':
