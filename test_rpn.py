@@ -32,10 +32,12 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(1)
 
     def test_int_div(self):
-        result = rpn.calculate("8 3 /")
+        result = rpn.calculate("8 3 //")
         self.assertEqual(2, result)
 
-    def test_and(self):
-        result = rpn.calculate("3 4 &")
-        self.assertEqual(0)
+    def test_divide_by_0_error(self):
+	result = rpn.calculate("0 5 /")
+	self.assertEqual("Divide by zero error", result)
 
+if __name__ == '__main__':
+    unittest.main()

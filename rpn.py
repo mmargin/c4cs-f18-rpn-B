@@ -14,13 +14,10 @@ operators = {
     '^': operator.pow,
     '%': operator.mod,
     '!': math.factorial,
-    '|': operator.xor,
-    '&': operator.and_,
-    '//': operator.floordiv,
-    '~': operator.inv
+    '//': operator.floordiv
 }
 
-def calculate(myarg, history):
+def calculate(myarg):
     stack = list()
     for token in myarg.split():
         try:
@@ -31,13 +28,10 @@ def calculate(myarg, history):
 	    if token == 'h':
 		print(history)
 	    else:
-		if token == '~' or  token == '!':
+		if token == '!':
 		    arg = stack.pop()
 		    result = function(arg)
-		    if token == '!':
-			history = "{}{} = {}".format(arg, token, result)
-		    else:
-			history = "{}{} = {}".format(token, arg, result)
+		    history = "{}{} = {}".format(arg, token, result)
 		else:
             	    arg2 = stack.pop()
             	    arg1 = stack.pop()
